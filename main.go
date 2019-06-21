@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 
 	// Llamamos el compilado que nos generó protoc
-	pb "./ejemplo_servicio/definicion_servicio/notificador"
+	pb "github.com/zetogk/first-grpc-with-golang/notificador"
 )
 
 const (
@@ -37,7 +37,7 @@ func main() {
 		log.Fatalf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterNotiticadorServer(s, &server{})
+	pb.RegisterNotificadorServer(s, &server{})
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
