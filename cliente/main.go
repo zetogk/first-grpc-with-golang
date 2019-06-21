@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 	
 	// Llamamos el compilado que nos generó protoc
-	pb "ejemplo_servicio/definicionservicio/notificador"
+	pb "github.com/zetogk/first-grpc-with-golang/notificador"
 )
 
 const (
@@ -29,7 +29,7 @@ func main() {
 	// Enviamos la petición al servidor
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.EnviarCorreo(ctx, &pb.HelloRequest{Destino: "zetogk@gmail.com", Asunto: "Prueba", Mensaje: "Este es un mensaje de prueba"})
+	r, err := c.EnviarCorreo(ctx, &pb.CorreoRequest{Destino: "zetogk@gmail.com", Asunto: "Prueba", Mensaje: "Este es un mensaje de prueba"})
 	if err != nil {
 		log.Fatalf("Error en la petición: %v", err)
 	}
