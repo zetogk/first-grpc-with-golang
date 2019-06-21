@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package notificador;
+
+// Definimos el servicio Notificador
+service Notificador {
+  rpc EnviarCorreo (CorreoRequest) returns (CorreoResponse) {} // Definimos el método EnviarCorreo
+}
+
+// Definimos el request del correo
+message CorreoRequest {
+  string destino = 1;
+  string asunto = 2;
+  string mensaje = 3;
+}
+
+// Definimos el response del correo
+message CorreoResponse {
+  bool enviado = 1;
+}
